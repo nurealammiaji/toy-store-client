@@ -1,13 +1,57 @@
 import { PiArrowLeftBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const AddToy = () => {
+
+    const handleAddToy = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const category = form.category.value;
+        const manufacturer = form.manufacturer.value;
+        const supplier = form.supplier.value;
+        const details = form.details.value;
+        const variant = form.variant.value;
+        const photoURL = form.photoURL.value;
+        const toy = {name, category, manufacturer, supplier, details, variant, photoURL};
+        console.log(toy);
+        fetch('http://localhost:5000/toys', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(toy),
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.acknowledged === true) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Toy added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                  })
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            Swal.fire({
+                title: 'Error!',
+                text: `${error.message}`,
+                icon: 'error',
+                confirmButtonText: 'Close'
+              })
+        })
+    }
+
     return (
         <div>
             <br /><br />
             <Link to="/"><button className="btn btn-secondary"><PiArrowLeftBold className="text-lg" />Back to Home</button></Link>
             <br /><br /><br />
-            <form className="w-9/12 p-10 mx-auto bg-base-200">
+            <form onSubmit={handleAddToy} className="w-9/12 p-10 mx-auto bg-base-200">
                 <div className="grid gap-5 md:grid-cols-2">
                     <div className="w-full max-w-xs form-control">
                         <label className="label">
@@ -50,7 +94,7 @@ const AddToy = () => {
                     <label className="label">
                         <span className="label-text">Photo URL</span>
                     </label>
-                    <input type="url" name="photo-url" placeholder="Type photo url here" className="input input-bordered" />
+                    <input type="url" name="photoURL" placeholder="Type photo url here" className="input input-bordered" />
                 </div>
                 <button type="submit" className="w-full mt-10 btn btn-primary">Submit</button>
             </form>

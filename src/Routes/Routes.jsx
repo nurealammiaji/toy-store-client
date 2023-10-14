@@ -3,6 +3,7 @@ import App from "../App";
 import Error from "../components/Error/Error";
 import Home from "../components/Home/Home";
 import AddToy from "../components/AddToy/AddToy";
+import ToyDetails from '../components/ToyDetails/ToyDetails';
 
 const Routes = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/add-toy",
                 element: <AddToy></AddToy>
+            },
+            {
+                path: "/toys/:id",
+                element: <ToyDetails></ToyDetails>
             }
         ]
     }
