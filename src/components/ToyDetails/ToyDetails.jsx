@@ -6,7 +6,6 @@ const ToyDetails = () => {
     const toy = useLoaderData();
 
     const { name, category, manufacturer, supplier, details, variant, photoURL } = toy;
-    console.log(toy);
 
     return (
         <div>
@@ -24,7 +23,7 @@ const ToyDetails = () => {
                         <h3 className="text-2xl"><span className="font-semibold">Variant:</span> {variant}</h3>
                         <h3 className="text-2xl"><span className="font-semibold">Manufacturer:</span> {manufacturer}</h3>
                         <h3 className="text-2xl"><span className="font-semibold">Supplier:</span> {supplier}</h3>
-                        <h3 className="text-2xl"><span className="font-semibold">Details:</span> {details}</h3>
+                        <h3 className="text-2xl text-justify"><span className="font-semibold">Details:</span> {details}</h3>
                     </div>
                 </div>
             </div>

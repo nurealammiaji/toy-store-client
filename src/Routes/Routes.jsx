@@ -23,12 +23,12 @@ const Routes = createBrowserRouter([
             {
                 path: "/toys/view/:id",
                 element: <ToyDetails></ToyDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({params}) => fetch(`https://toy-store-server-bd.vercel.app/toys/${params.id}`)
             },
             {
                 path: "/toys/edit/:id",
                 element: <EditToy></EditToy>,
-                loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({params}) => fetch(`https://toy-store-server-bd.vercel.app/toys/${params.id}`)
             },
         ]
     }

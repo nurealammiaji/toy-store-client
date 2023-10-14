@@ -22,7 +22,7 @@ const EditToy = () => {
         const photoURL = form.photoURL.value;
         const toy = { id, name, category, manufacturer, supplier, details, variant, photoURL };
         console.log(toy);
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`https://toy-store-server-bd.vercel.app/toys/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

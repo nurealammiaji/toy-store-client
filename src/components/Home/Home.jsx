@@ -8,7 +8,7 @@ const Home = () => {
     const [toys, setToys] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toy-store-server-bd.vercel.app/toys')
             .then(res => res.json())
             .then(data => setToys(data))
     })
@@ -26,7 +26,7 @@ const Home = () => {
                 <div>
                     <div className="grid gap-10 md:grid-cols-2">
                         {
-                            (toys) ? toys.map(toy => <Toy key={toy._id} toy={toy}></Toy>) : 'There is no toy available!!'
+                            (toys) ? toys.map(toy => <Toy key={toy._id} toy={toy}></Toy>) : <div className="text-center col-span-2"><h4 className="text-xl">There are no toy available!!</h4></div>
                         }
                     </div>
                 </div>

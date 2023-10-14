@@ -16,7 +16,7 @@ const AddToy = () => {
         const photoURL = form.photoURL.value;
         const toy = {name, category, manufacturer, supplier, details, variant, photoURL};
         console.log(toy);
-        fetch('http://localhost:5000/toys', {
+        fetch('https://toy-store-server-bd.vercel.app/toys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
